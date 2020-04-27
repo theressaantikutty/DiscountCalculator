@@ -8,6 +8,11 @@ namespace DiscountCalculator_Tests
 	[TestFixture]
 	public class Test_DiscountCalculator
 	{
+		/// <summary>
+		///  Calculate Discount Factor - Test
+		/// </summary>
+		/// <param name="inputValue"></param>
+		/// <param name="expectedValue"></param>
 		[Test]
 		[TestCase(1, 0)]
 		[TestCase(2, 0.8)]
@@ -24,6 +29,11 @@ namespace DiscountCalculator_Tests
 			Assert.AreEqual(expectedValue, Math.Round(actualResult, 2));
 		}
 
+		/// <summary>
+		/// Get Discounted Price - Test
+		/// </summary>
+		/// <param name="inputValue"></param>
+		/// <param name="expectedValue"></param>
 		[Test]
 		[TestCase((new int[] { 2, 2, 2, 1, 1 }), 51.60)]
 		[TestCase((new int[] { 1, 1, 2}), 29.60)]
@@ -39,12 +49,12 @@ namespace DiscountCalculator_Tests
 		[TestCase((new int[] { 100}), 800)]
 		[TestCase((new int[] { 500,100,50,25,15}), 5206)]
 		
-		public void Test_GetDiscount(int[] inputValue, double expectedValue)
+		public void Test_GetDiscountedPrice(int[] inputValue, double expectedValue)
 		{
 			//Arrange
 			BookStore bookStore = new BookStore();
 			//Act
-			double actualResult = bookStore.GetDiscount(new List<int>(inputValue)); 
+			double actualResult = bookStore.GetDiscountedPrice(new List<int>(inputValue)); 
 			//Assert
 			Assert.AreEqual(expectedValue, Math.Round(actualResult, 2));
 		}		
